@@ -242,12 +242,34 @@ nav {
 /* Colores destacados */
 .highlight {
     color: #00ff88;
+    font-size: 5rem;
+    font-weight: 1000;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.highlight-green-e {
+    font-size: 5rem;
+    font-weight: 1000;
+    color: #00ff88;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+
 }
 
 .highlight-green {
-    color: #FFFF;
+    font-size: 5rem;
+    font-weight: 1000;
+    color: #FFF;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+
 }
 
 .highlight-red {
     color: red;
+}
+
+.presentation-h3 {
+    color:#747474;
 }
