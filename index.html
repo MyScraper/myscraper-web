@@ -1,28 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Scraper</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="img/favicon.ico" />
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
-        <div class="w3-display-topleft w3-padding-large w3-xxlarge">
-            MY SCRAP<span class="green">E</span>R
+
+    <!-- Barra de navegación -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="img/favicon.ico" alt="Logo" />
+                My Scrap<span class="e">e</span>r
+            </div>
+            <ul class="nav-links">
+                <li>Security</li>
+                <li>Learn</li>
+                <li>Explore</li>
+                <li>Support</li>
+            </ul>
+            <button class="btn-download-top">Download</button>
+        </nav>
+    </header>
+
+    <!-- Panel 1: Sección Hero -->
+    <section class="hero">
+        <h1>Get real-time transactions notifications</h1>
+        <p>The crypto app that’ll take you places</p>
+        <button class="btn-download-chrome">Download for IOs/Android</button>
+        <p class="info-disclaimer">
+            - Aprovechar oportunidades marca la <span class="e">diferencia</span> -
+        </p>
+        <!-- Contenedor para la imagen del móvil -->
+        <div class="mobile-container">
+            <img src="img/first-layout.png" alt="Móvil" class="mobile">
         </div>
-        <div class="w3-display-middle w3-center coming-soon">
-            <h1 class="w3-jumbo w3-animate-top">COMING SOON...</h1>
-            <hr class="w3-border-grey" style="margin:auto;width:40%">
-	    <p class="w3-large">Aprovechar oportunidades marca la <span class="green">diferencia.</span></p>
+    </section>
+
+    <!-- Panel 2: Contenido adicional -->
+    <!-- Panel 2: Presentación tipo slide -->
+    <section class="content presentation">
+        <div class="presentation-text">
+            <h2><span class="highlight-green">MY SCRAP</span><span class="e">E</span>R</h2>
+            <h3><span class="">PRESENTATION</span></h3>
+            <p>
+                My Scraper es un software multiplataforma que proporciona un servicio de notificaciones sobre
+                movimientos de carteras de distintas blockchains en tiempo real, con el fin de que pueda realizar un
+                seguimiento preciso sobre las transacciones que pueda llevar a cabo dicha cartera y de esta manera
+                mejorar la eficiencia en sus operaciones.
+            </p>
         </div>
-    </div>
+        <div class="presentation-image">
+            <div class="circle">
+                <img src="img/UX-dashboard.png" alt="Dispositivo móvil" />
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Script para controlar el efecto de fade en el header, Panel 1 y la imagen del móvil -->
+    <script>
+        function updateFadeEffect() {
+            var scrollY = window.scrollY;
+            var fadeRange = window.innerHeight;
+
+            var header = document.querySelector('header');
+            var hero = document.querySelector('.hero');
+            var mobile = document.querySelector('.mobile-container');
+            var content = document.querySelector('.content');
+
+            // Header
+            if (scrollY < fadeRange) {
+                header.style.opacity = 1 - (scrollY / fadeRange);
+                header.style.transform = 'translateY(' + (-scrollY / 2) + 'px)';
+            } else {
+                header.style.opacity = 0;
+                header.style.transform = 'translateY(-' + (fadeRange / 2) + 'px)';
+            }
+
+            // Hero
+            if (scrollY < fadeRange) {
+                hero.style.opacity = 1 - (scrollY / fadeRange);
+                var scale = 1 - (scrollY / (fadeRange * 5));
+                hero.style.transform = 'scale(' + scale + ')';
+            } else {
+                hero.style.opacity = 0;
+                hero.style.transform = 'scale(0.8)';
+            }
+
+            // Mobile image
+            if (scrollY < fadeRange) {
+                mobile.style.opacity = 1 - (scrollY / fadeRange);
+                var translateY = (scrollY / fadeRange) * 50;
+                mobile.style.transform = 'translate(-50%, -' + translateY + 'px)';
+            } else {
+                mobile.style.opacity = 0;
+                mobile.style.transform = 'translate(-50%, -50px)';
+            }
+
+            const presentation = document.querySelector('.presentation');
+            const rect = presentation.getBoundingClientRect();
+
+            // Mostrar si al menos el 40% está visible
+            if (rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.2) {
+                presentation.classList.add('visible');
+            } else {
+                presentation.classList.remove('visible');
+            }
+
+        }
+
+        window.addEventListener('scroll', updateFadeEffect);
+        window.addEventListener('load', updateFadeEffect);
+    </script>
+
 </body>
 
 </html>
