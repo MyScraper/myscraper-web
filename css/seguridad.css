@@ -1,0 +1,203 @@
+/* Estilos generales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #181d27;
+    color: #333333;
+    overflow-x: hidden;
+}
+
+.e {
+    color: rgb(5, 172, 5);
+}
+
+/* Header: barra de navegación */
+header {
+    width: 100%;
+    background-color: #181d27;
+    box-shadow: 0 1px 2px rgb(5, 172, 5);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 2rem;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    margin-right: 8px;
+}
+
+/* Enlaces de navegación con interacción al hover */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-links li {
+    cursor: pointer;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+    color: #fff;
+}
+
+.nav-links li::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 2px;
+    background-color: rgb(5, 172, 5);
+    transition: width 0.3s ease;
+}
+
+.nav-links li:hover {
+    color: rgb(5, 172, 5);
+}
+
+.nav-links li:hover::after {
+    width: 100%;
+}
+
+/* ===== Estilos específicos para seguridad.html ===== */
+
+.security-section {
+    background-color: #181d27;
+    color: #ffffff;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    line-height: 1.7;
+    font-size: 1.1rem;
+}
+
+.security-section h1 {
+    font-size: 3rem;
+    text-align: center;
+    color: rgb(5, 172, 5);
+    margin-bottom: 1rem;
+}
+
+.security-section h2 {
+    font-size: 2rem;
+    text-align: center;
+    color: #ccc;
+    margin-bottom: 3rem;
+    font-weight: 400;
+}
+
+.security-section article {
+    background-color: #222837;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 6px rgba(0, 255, 136, 0.1);
+}
+
+.security-section article h3 {
+    color: rgb(5, 172, 5);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.security-section p {
+    margin-bottom: 1rem;
+    color: #e0e0e0;
+}
+
+@media (max-width: 768px) {
+    .security-section {
+        padding: 2rem 1rem;
+    }
+
+    .security-section h1 {
+        font-size: 2.2rem;
+    }
+
+    .security-section h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/** Footer **/
+.footer {
+    background-color: #181d27;
+    color: #ccc;
+    padding: 4rem 2rem 2rem;
+    font-size: 0.95rem;
+}
+
+.footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    column-gap: 4rem;
+    /* más espacio horizontal */
+    row-gap: rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-column h4 {
+    color: #888;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 0.6rem;
+}
+
+.footer-column ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #00ff88;
+}
+
+.footer-bottom {
+    text-align: left;
+    margin-top: 2rem;
+    border-top: 1px solid #181d27;
+    padding-top: 1.5rem;
+    color: #999;
+    font-size: 0.85rem;
+}
+
+.unstyled-link {
+    all: unset;
+    cursor: pointer;
+  }
+  

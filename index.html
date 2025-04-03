@@ -15,10 +15,10 @@
         <nav>
             <div class="logo">
                 <img src="img/favicon.ico" alt="Logo" />
-                My Scrap<span class="e">e</span>r
+                MY SCRAP<span class="e"> E </span>R
             </div>
             <ul class="nav-links">
-                <li>Security</li>
+                <li><a href="security-page.html" class="unstyled-link">Security</a></li>
                 <li>Learn</li>
                 <li>Explore</li>
                 <li>Support</li>
@@ -33,7 +33,7 @@
         <p>The crypto app that’ll take you places</p>
         <button class="btn-download-chrome">Download for IOs/Android</button>
         <p class="info-disclaimer">
-            - Aprovechar oportunidades marca la <span class="e">diferencia</span> -
+             <u><i>Seizing opportunities is what sets you <span class="e">apart</span></i></u>
         </p>
         <!-- Contenedor para la imagen del móvil -->
         <div class="mobile-container">
@@ -41,24 +41,52 @@
         </div>
     </section>
 
-    <!-- Panel 2: Contenido adicional -->
-    <!-- Panel 2: Presentación tipo slide -->
-    <section class="content presentation">
-        <div class="presentation-text">
-            <h2><span class="highlight-green">MY SCRAP</span><span class="highlight-green-e">E</span><span class="highlight-green">R</span></h2>
-            <h3><span class="presentation-h3">PRESENTATION</span></h3>
-            <p>
-                My Scraper es un software multiplataforma que proporciona un servicio de notificaciones sobre
-                movimientos de carteras de distintas blockchains en tiempo real, con el fin de que pueda realizar un
-                seguimiento preciso sobre las transacciones que pueda llevar a cabo dicha cartera y de esta manera
-                mejorar la eficiencia en sus operaciones.
-            </p>
-        </div>
-        <div class="presentation-image">
-            <div class="circle">
-                <img src="img/UX-dashboard.png" alt="Dispositivo móvil" />
+
+    <!--Section 2-->
+    <section class="presentation-scroll">
+        <div class="presentation-sticky">
+            <div class="step step-1 scroll-left">
+                <div class="presentation-text">
+                    <h2><span class="highlight-green">MY SCRAP</span><span class="highlight-green-e">E</span><span
+                            class="highlight-green">R</span></h2>
+                    <h3><span class="presentation-h3">PRESENTATION</span></h3>
+                </div>
+            </div>
+
+            <div class="step step-2 scroll-left">
+                <p class="presentation-p">My Scraper is a cross-platform software that provides a real-time notification
+                    service about wallet movements across different blockchains.</p>
+            </div>
+
+            <div class="step step-3 scroll-left">
+                <p class="presentation-p">It allows you to accurately track transactions and improve the efficiency of
+                    your operations.</p>
+            </div>
+            <br>
+            <div class="step step-4 scroll-right">
+                <div class="presentation-image">
+                    <div class="circle">
+                        <img src="img/UX-dashboard-prueba.png" alt="Dispositivo móvil" />
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
+
+    <section class="panel-logos">
+        <h2 class="section-title">
+            <span class="highlight-green">SUPPORTED</span> <span class="highlight-green-e">BLOCK</span><span
+                class="highlight-green">CHAINS!</span>
+        </h2>
+        <div class="logo-grid">
+            <img class="crypto-logo" src="img/avalanche-avax-logo.png" alt="AVAX" />
+            <img class="crypto-logo" src="img/bnb-bnb-logo.png" alt="BNB" />
+            <img class="crypto-logo" src="img/eth-logo.png" alt="ETH" />
+            <img class="crypto-logo" src="img/polygon-matic-logo.png" alt="MATIC" />
+            <img class="crypto-logo" src="img/solana-sol-logo.png" alt="SOLANA" />
+        </div>
+        <br><br>
+        <p class="coming-soon">MORE BLOCKCHAINS IN DEVELOPMENT...</p>
     </section>
 
 
@@ -102,21 +130,105 @@
                 mobile.style.transform = 'translate(-50%, -50px)';
             }
 
-            const presentation = document.querySelector('.presentation');
-            const rect = presentation.getBoundingClientRect();
 
-            // Mostrar si al menos el 40% está visible
-            if (rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.2) {
-                presentation.classList.add('visible');
+
+            const steps = document.querySelectorAll('.step');
+
+            steps.forEach((step, i) => {
+                const rect = step.getBoundingClientRect();
+                const isFirst = step.classList.contains("step-1");
+
+                const inView = isFirst
+                    ? rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.1 // más largo
+                    : rect.top < window.innerHeight * 0.6 && rect.bottom > window.innerHeight * 0.3;
+
+                if (inView) {
+                    step.classList.add("visible");
+                } else {
+                    step.classList.remove("visible");
+                }
+            });
+
+            // Control de scroll horizontal + fade en Panel 2
+            const scrollContainer = document.querySelector('.presentation-scroll');
+            const scrollStart = scrollContainer.offsetTop;
+            const scrollEnd = scrollStart + scrollContainer.offsetHeight - window.innerHeight;
+
+            const progress = Math.min(1, Math.max(0, (window.scrollY - scrollStart) / (scrollEnd - scrollStart)));
+
+            // Si scroll > 60%, empieza a sacar elementos
+            if (progress > 0.6) {
+                document.querySelectorAll('.scroll-left').forEach(el => el.classList.add('out'));
+                document.querySelectorAll('.scroll-right').forEach(el => el.classList.add('out'));
             } else {
-                presentation.classList.remove('visible');
+                document.querySelectorAll('.scroll-left').forEach(el => el.classList.remove('out'));
+                document.querySelectorAll('.scroll-right').forEach(el => el.classList.remove('out'));
             }
+
+            const logos = document.querySelectorAll('.crypto-logo');
+            logos.forEach((logo) => {
+                const rect = logo.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.8) {
+                    logo.classList.add('visible');
+                } else {
+                    logo.classList.remove('visible');
+                }
+            });
 
         }
 
         window.addEventListener('scroll', updateFadeEffect);
         window.addEventListener('load', updateFadeEffect);
     </script>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="#">Download</a></li>
+                    <li><a href="#">Security</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">Feature Requests</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Explore</a></li>
+                    <li><a href="#">Learn</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Docs</a></li>
+                    <li><a href="#">Taxes</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Status</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press Kit</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Socials</h4>
+                <ul>
+                    <li><a href="#">X.com</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">YouTube</a></li>
+                    <li><a href="#">Reddit</a></li>
+                    <li><a href="#">Podcast</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© My Scraper 2025</p>
+        </div>
+    </footer>
 
 </body>
 
