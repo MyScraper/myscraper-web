@@ -17,6 +17,11 @@
                 <img src="img/favicon.ico" alt="Logo" />
                 MY SCRAP<span class="e"> E </span>R
             </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
             <ul class="nav-links">
                 <li><a href="security-page.html" class="unstyled-link">Security</a></li>
                 <li>Learn</li>
@@ -33,7 +38,7 @@
         <p>The crypto app that’ll take you places</p>
         <button class="btn-download-chrome">Download for IOs/Android</button>
         <p class="info-disclaimer">
-             <u><i>Seizing opportunities is what sets you <span class="e">apart</span></i></u>
+            <u><i>Seizing opportunities is what sets you <span class="e">apart</span></i></u>
         </p>
         <!-- Contenedor para la imagen del móvil -->
         <div class="mobile-container">
@@ -75,8 +80,7 @@
 
     <section class="panel-logos">
         <h2 class="section-title">
-            <span class="highlight-green">SUPPORTED</span> <span class="highlight-green-e">BLOCK</span><span
-                class="highlight-green">CHAINS!</span>
+            <span class="highlight-green">SUPPORTED</span> <span class="highlight-green-e">BLOCKCHAINS!</span>
         </h2>
         <div class="logo-grid">
             <img class="crypto-logo" src="img/avalanche-avax-logo.png" alt="AVAX" />
@@ -176,6 +180,13 @@
             });
 
         }
+
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
 
         window.addEventListener('scroll', updateFadeEffect);
         window.addEventListener('load', updateFadeEffect);

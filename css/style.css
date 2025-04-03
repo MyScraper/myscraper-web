@@ -62,6 +62,7 @@ nav {
     position: relative;
     transition: color 0.3s ease;
     color: #fff;
+    margin-left: 1rem;
 }
 
 .nav-links li::after {
@@ -225,7 +226,7 @@ nav {
 }
 
 .circle {
-    background-color: #d7d7d7;
+    background-color: #586b85;
     width: 350px;
     height: 350px;
     border-radius: 50%;
@@ -319,7 +320,7 @@ nav {
 }
 
 .presentation-image .circle {
-    background-color: #d7d7d7;
+    background-color: #586b85;
     width: 300px;
     height: 300px;
     border-radius: 50%;
@@ -497,6 +498,10 @@ nav {
     margin-top: 2rem;
   }
 
+  .mobile {
+    display: none;
+  }
+
   .logo {
     font-size: 1.5rem;
   }
@@ -513,7 +518,56 @@ nav {
   }
 
   .btn-download-top {
-    align-self: flex-end;
-    margin-top: 1rem;
+    display: none;
   }
 }
+
+/* Estilos para el ícono de hamburguesa */
+.hamburger {
+    display: none;
+    cursor: pointer;
+  }
+  
+  .hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    margin: 5px 0;
+    transition: 0.4s;
+  }
+  
+  /* Estilos específicos para móviles */
+  @media screen and (max-width: 390px) {
+    /* Mostrar el ícono de hamburguesa */
+    .hamburger {
+      display: block;
+    }
+    
+    /* Ocultar los enlaces por defecto y prepararlos para mostrarse en forma de menú */
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 60px; /* Ajusta según la altura del header */
+      left: 0;
+      background-color: #181d27;
+      width: 100%;
+      flex-direction: column;
+      padding: 1rem 0;
+      z-index: 998;
+    }
+    
+    /* Al activar la clase 'active', se muestran los enlaces */
+    .nav-links.active {
+      display: flex;
+    }
+    
+    /* Opcional: Ajusta la navegación para centrar o espaciar los elementos */
+    nav {
+      width: 100%;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+  
