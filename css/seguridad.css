@@ -217,7 +217,7 @@
   }
   
   /* Media queries para móviles */
-  @media screen and (max-width: 390px) {
+  @media screen and (max-width: 450px) {
     nav {
       flex-direction: column;
       align-items: flex-start;
@@ -265,7 +265,7 @@
   }
   
   /* Estilos específicos para móviles */
-  @media screen and (max-width: 390px) {
+  @media screen and (max-width: 450px) {
     /* Mostrar el ícono de hamburguesa */
     .hamburger {
       display: block;

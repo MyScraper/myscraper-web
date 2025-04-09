@@ -154,12 +154,10 @@ nav {
 
 /* Contenedor para la imagen del móvil */
 .mobile-container {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 1;
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    position: relative;
+    margin-top: 3rem;
+    text-align: center;
+    transform: none;
 }
 
 .mobile {
@@ -277,7 +275,7 @@ nav {
 
 /**Panel sticky**/
 .presentation-scroll {
-    height: 350vh;
+    height: 500vh;
     position: relative;
     background-color: #181d27;
 }
@@ -333,7 +331,18 @@ nav {
 .presentation-image img {
     max-width: 80%;
 }
+/*
+.scroll-up {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: transform 1s ease, opacity 1s ease;
+}
 
+.scroll-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+*/
 .scroll-left,
 .scroll-right {
     opacity: 1;
@@ -342,12 +351,12 @@ nav {
 }
 
 .scroll-left.out {
-    transform: translateX(-100px);
+    transform: translateX(-50px);
     opacity: 0;
 }
 
 .scroll-right.out {
-    transform: translateX(100px);
+    transform: translateX(50px);
     opacity: 0;
 }
 
@@ -460,7 +469,7 @@ nav {
     cursor: pointer;
   }
   
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 450px) {
   .hero h1,
   .highlight,
   .highlight-green-e,
@@ -538,7 +547,7 @@ nav {
   }
   
   /* Estilos específicos para móviles */
-  @media screen and (max-width: 390px) {
+  @media screen and (max-width: 450px) {
     /* Mostrar el ícono de hamburguesa */
     .hamburger {
       display: block;
