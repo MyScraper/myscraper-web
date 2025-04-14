@@ -55,10 +55,10 @@ function updateFadeEffect() {
     if (scrollY < fadeRange) {
         mobile.style.opacity = 1 - (scrollY / fadeRange);
         var translateY = (scrollY / fadeRange) * 50;
-        mobile.style.transform = 'translate(-50%, -' + translateY + 'px)';
+        mobile.style.transform = 'translateY(-50%, -' + translateY + 'px)';
     } else {
         mobile.style.opacity = 0;
-        mobile.style.transform = 'translate(-50%, -50px)';
+        mobile.style.transform = 'translateY(-50%, -50px)';
     }
 
 
@@ -87,8 +87,8 @@ function updateFadeEffect() {
 
     const progress = Math.min(1, Math.max(0, (window.scrollY - scrollStart) / (scrollEnd - scrollStart)));
 
-    // Si scroll > 60%, empieza a sacar elementos
-    if (progress > 0.6) {
+    // Si scroll > 10%, empieza a sacar elementos
+    if (progress > 0.1) {
         document.querySelectorAll('.scroll-left').forEach(el => el.classList.add('out'));
         document.querySelectorAll('.scroll-right').forEach(el => el.classList.add('out'));
     } else {
@@ -97,9 +97,12 @@ function updateFadeEffect() {
     }
 
     const logos = document.querySelectorAll('.crypto-logo');
+    if (progress > 0.1) {
+        logos.forEach(logo => logo.classList.add('visible'));
+    }
     logos.forEach((logo) => {
         const rect = logo.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.8) {
+        if (rect.top < window.innerHeight) {
             logo.classList.add('visible');
         } else {
             logo.classList.remove('visible');

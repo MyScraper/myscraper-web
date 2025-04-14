@@ -510,7 +510,8 @@ nav {
     }
 
     .mobile {
-        display: none;
+        display: block;
+	margin: 0 auto;
     }
 
     .logo {
