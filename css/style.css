@@ -167,13 +167,14 @@ nav {
 
 /* Panel 2: Contenido adicional */
 .content {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 2rem auto;
     padding: 2rem;
     transition: opacity 0.5s ease-out;
-    opacity: 0;
     min-height: 100vh;
+    color: #ffffff;
 }
+
 
 /* Panel 2 tipo presentación */
 .presentation {
@@ -240,7 +241,7 @@ nav {
 
 /* Colores destacados */
 .highlight {
-    color: #00ff88;
+    color: rgb(5, 172, 5);
     font-size: 5rem;
     font-weight: 1000;
     margin-bottom: 1rem;
@@ -250,7 +251,7 @@ nav {
 .highlight-green-e {
     font-size: 5rem;
     font-weight: 1000;
-    color: #00ff88;
+    color: rgb(5, 172, 5);
     margin-bottom: 1rem;
     line-height: 1.2;
 
@@ -511,7 +512,7 @@ nav {
 
     .mobile {
         display: block;
-	margin: 0 auto;
+        margin: 0 auto;
     }
 
     .logo {
