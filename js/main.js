@@ -97,17 +97,18 @@ function updateFadeEffect() {
     }
 
     const logos = document.querySelectorAll('.crypto-logo');
-    if (progress > 0.1) {
-        logos.forEach(logo => logo.classList.add('visible'));
+
+logos.forEach((logo) => {
+    const rect = logo.getBoundingClientRect();
+    const visibleThreshold = window.innerHeight * 0.85;
+
+    if (rect.top < visibleThreshold) {
+        logo.classList.add('visible');
+    } else {
+        logo.classList.remove('visible');
     }
-    logos.forEach((logo) => {
-        const rect = logo.getBoundingClientRect();
-        if (rect.top < window.innerHeight) {
-            logo.classList.add('visible');
-        } else {
-            logo.classList.remove('visible');
-        }
-    });
+});
+
 
 }
 
@@ -140,3 +141,14 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const slides = document.querySelectorAll('.slider .slide');
+    let index = 0;
+
+    setInterval(() => {
+      slides[index].classList.remove('active');
+      index = (index + 1) % slides.length;
+      slides[index].classList.add('active');
+    }, 3000); // cambia cada 3 segundos
+  });

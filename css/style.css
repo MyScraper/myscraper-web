@@ -175,56 +175,125 @@ nav {
     color: #ffffff;
 }
 
-
-/* Panel 2 tipo presentación */
-.presentation {
+.download-buttons {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    opacity: 0;
-    transform: translateX(-100px);
-    transition: opacity 3s ease, transform 3s ease;
-    will-change: opacity, transform;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
 }
 
-.presentation.visible {
-    opacity: 1;
-    transform: translateX(0);
+.download-buttons img {
+    height: 70px; /* Ajusta según tus imágenes */
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.download-buttons img:hover {
+    transform: scale(1.05);
+}
+
+.logo-wrapper {
+    max-width: 1000px; /* o el tamaño que desees como máximo */
+    width: 100%;
+    margin: 0 auto; /* centrado */
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  perspective: 1000px; /* necesario para 3D */
+  margin: 0 auto;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  backface-visibility: hidden;
+  opacity: 0;
+  transform: rotateY(180deg);
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: rotateY(0deg);
+  z-index: 1;
 }
 
 
-.presentation-text {
-    flex: 1;
-    padding: 2rem;
+.logo-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.logo-align-left {
+  text-align: left;
+  margin: 0 0 1rem 0; /* espacio con lo de abajo */
+}
+
+.logo-align-left img {
+  max-width: 300px; /* opcional, ajusta el ancho */
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 1) Aseguramos que .presentation sea full-width y centre a sus hijos */
+.presentation {
+  display: flex;
+  align-items: center;           /* centra verticalmente texto y slider */
+  justify-content: space-between;/* texto a la izquierda, slider a la derecha */
+  width: 100%;
+  max-width: 1200px;             /* ajusta según tu layout */
+  margin: 0 auto;                /* lo centra horizontal en la página */
+  padding: 0 2rem;               /* espaciado lateral */
+}
+
+/* 2) Cada columna ocupa la mitad */
+.presentation-text,
+.presentation-image {
+  flex: 1;
+}
+
+.presentation-p{
     color: white;
 }
 
-.presentation-text h2 {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
+/* 3) Fijamos una altura para el slider igual a la altura de la imagen */
+.presentation-image .slider {
+  position: relative;
+  width: 100%;
+  max-width: 300px;  /* igual que antes */
+  height: 600px;     /* AJUSTA este valor a la altura real de tu imagen */
+  perspective: 1000px;
+  margin: 0 auto;
 }
 
-.presentation-text h3 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+/* 4) Animación de giro 3D sobre un contenedor que ya tiene altura */
+.presentation-image .slide {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  opacity: 0;
+  transform: rotateY(180deg);
+  transition: transform 1s ease, opacity 1s ease;
 }
 
-.presentation-text p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    max-width: 600px;
+.presentation-image .slide.active {
+  opacity: 1;
+  transform: rotateY(0deg);
+  z-index: 1;
 }
 
-.presentation-image {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-}
 
-.circle {
+/*.circle {
     background-color: #586b85;
     width: 350px;
     height: 350px;
@@ -237,7 +306,7 @@ nav {
 .circle img {
     max-width: 80%;
     height: auto;
-}
+}*/
 
 /* Colores destacados */
 .highlight {
@@ -276,7 +345,7 @@ nav {
 
 /**Panel sticky**/
 .presentation-scroll {
-    height: 500vh;
+    height: 120vh;
     position: relative;
     background-color: #181d27;
 }
@@ -315,7 +384,6 @@ nav {
     font-size: 1.2rem;
     line-height: 1.6;
     max-width: 600px;
-    margin: 0 auto;
 }
 
 .presentation-image .circle {
@@ -493,11 +561,14 @@ nav {
         align-items: center;
     }
 
-    .presentation-text,
-    .presentation-image {
-        padding: 1rem;
-        text-align: center;
-    }
+.presentation-text, .presentation-image {
+  flex: 1;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 
     .presentation-image .circle {
         width: 250px;
@@ -659,4 +730,20 @@ nav {
         align-items: center;
         justify-content: space-between;
     }
+}
+
+/* ---------------------------------------------
+   Supported Blockchains heading image styling
+   --------------------------------------------- */
+.supported-blockchains {
+  width: 100%;
+  text-align: center;      /* centra la imagen */
+  margin-bottom: 2rem;     /* espacio abajo antes del grid */
+}
+
+.supported-blockchains img {
+  display: inline-block;   /* se comporta como texto centrado */
+  max-width: 700px;        /* ancho máximo, ajusta a tu gusto */
+  width: 100%;              /* escala al 80% del contenedor */
+  height: auto;            /* mantiene la proporción */
 }
