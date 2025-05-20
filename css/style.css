@@ -155,13 +155,13 @@ nav {
 /* Contenedor para la imagen del móvil */
 .mobile-container {
     position: relative;
-    margin-top: 3rem;
+    /*margin-top: 0.5rem;*/
     text-align: center;
     transform: none;
 }
 
 .mobile {
-    max-width: 300px;
+    max-width: 500px;
     width: 100%;
 }
 
@@ -237,7 +237,7 @@ nav {
 }
 
 .logo-align-left img {
-  max-width: 300px; /* opcional, ajusta el ancho */
+  /*max-width: 300px;*/ /* opcional, ajusta el ancho */
   width: 100%;
   height: auto;
   display: block;
@@ -268,8 +268,8 @@ nav {
 .presentation-image .slider {
   position: relative;
   width: 100%;
-  max-width: 300px;  /* igual que antes */
-  height: 600px;     /* AJUSTA este valor a la altura real de tu imagen */
+  max-width: 500px;  /* igual que antes */
+  height: 900px;     /* AJUSTA este valor a la altura real de tu imagen */
   perspective: 1000px;
   margin: 0 auto;
 }
@@ -277,7 +277,7 @@ nav {
 /* 4) Animación de giro 3D sobre un contenedor que ya tiene altura */
 .presentation-image .slide {
   position: absolute;
-  top: 0; left: 0;
+  top: 0; left: 8rem;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;

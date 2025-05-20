@@ -18,8 +18,8 @@
     color: #00ff88;
   }
   
-  /* Header y navegación */
-  header {
+ /* Header: barra de navegación */
+header {
     width: 100%;
     background-color: #181d27;
     box-shadow: 0 1px 2px rgb(5, 172, 5);
@@ -27,57 +27,71 @@
     top: 0;
     z-index: 999;
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-  }
-  
-  nav {
+}
+
+.unstyled-link {
+    all: unset;
+    cursor: pointer;
+}
+
+nav {
     max-width: 1200px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
-  }
-
-  .logo a {
-  text-decoration: none;
-  color: inherit;
 }
 
-  
-  .logo {
+.logo {
     font-weight: bold;
     font-size: 2rem;
-    color: #fff;
+    color: #FFF;
     display: flex;
     align-items: center;
-  }
-  
-  .logo img {
+}
+
+.logo img {
     height: 50px;
     margin-right: 8px;
-  }
-  
-  .nav-links {
+}
+
+/* Enlaces de navegación con interacción al hover */
+.nav-links {
     list-style: none;
     display: flex;
     gap: 1.5rem;
-  }
-  
-  .nav-links li {
+}
+
+.nav-links li {
     cursor: pointer;
     font-weight: 500;
+    position: relative;
     transition: color 0.3s ease;
     color: #fff;
-    margin-left: 4rem;
-  }
-  
-  /* Destacar la opción activa */
-  .nav-links li.active {
+    margin-left: 1rem;
+}
+
+.nav-links li::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0%;
+    height: 2px;
+    background-color: rgb(5, 172, 5);
+    transition: width 0.3s ease;
+}
+
+.nav-links li:hover {
     color: rgb(5, 172, 5);
-  }
-  
-  /* Botón Download (oculto en móviles) */
-  .btn-download-top {
+}
+
+.nav-links li:hover::after {
+    width: 100%;
+}
+
+.btn-download-top {
     background-color: rgb(5, 172, 5);
     color: #fff;
     border: none;
@@ -86,7 +100,12 @@
     cursor: pointer;
     font-weight: 500;
     transition: background-color 0.3s ease;
-  }
+}
+
+.btn-download-top:hover {
+    background-color: #dd1e1e;
+}
+
   
   /* Sección de Seguridad (presentación) */
   .presentation-scroll {

@@ -88,7 +88,7 @@ function updateFadeEffect() {
     const progress = Math.min(1, Math.max(0, (window.scrollY - scrollStart) / (scrollEnd - scrollStart)));
 
     // Si scroll > 10%, empieza a sacar elementos
-    if (progress > 0.1) {
+    if (progress > 0.5) {
         document.querySelectorAll('.scroll-left').forEach(el => el.classList.add('out'));
         document.querySelectorAll('.scroll-right').forEach(el => el.classList.add('out'));
     } else {
