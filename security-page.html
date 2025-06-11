@@ -41,11 +41,11 @@
     <section class="seguridad-presentation-scroll">
         <div class="seguridad-presentation-text">
             <h2>
-                <span class="seguridad-highlight-green">SECURITY</span>
-                <span class="seguridad-seguridad-highlight-green-e"> & </span>
-                <span class="seguridad-highlight-green">PRIVACY</span>
+                <span>SECURITY</span>
+                <span> & </span>
+                <span>PRIVACY</span>
             </h2>
-            <h3 class="seguridad-presentation-h3">OUR COMMITMENT</h3>
+            <h3>OUR COMMITMENT</h3>
         </div>
 
         <!-- Frontend Protection (Flutter + Dart) -->
@@ -53,7 +53,7 @@
             <h3>Frontend Protection (Flutter + Dart)</h3>
             <div class="security-item">
                 <h4>Native Compilation and Obfuscation</h4>
-                <p>MyScraper is built with Flutter and compiled into native binaries, making it much harder to reverse
+                <p class="presentation-p">MyScraper is built with Flutter and compiled into native binaries, making it much harder to reverse
                     engineer.
                     Additionally, we use code obfuscation techniques that further mask our application’s structure and
                     logic to
@@ -61,7 +61,7 @@
             </div>
             <div class="security-item">
                 <h4>Secure Key Management</h4>
-                <p>We never store API keys (for Firebase, Alchemy, and other services) directly in our source code.
+                <p class="presentation-p">We never store API keys (for Firebase, Alchemy, and other services) directly in our source code.
                     Instead, we
                     rely on secure methods—such as encrypted environment variables or Firebase Remote Config—to load
                     these
@@ -71,7 +71,7 @@
             </div>
             <div class="security-item">
                 <h4>Client-Side Validation</h4>
-                <p>While MyScraper implements basic input checks on the frontend—such as validating user inputs for
+                <p class="presentation-p">While MyScraper implements basic input checks on the frontend—such as validating user inputs for
                     convenience—all critical security checks are handled by secure backend services. This separation
                     ensures that
                     even if attackers tamper with the app, they cannot bypass important validations performed on the
@@ -84,14 +84,14 @@
             <h3>Secure Communication (Network/API)</h3>
             <div class="security-item">
                 <h4>HTTPS Encryption</h4>
-                <p>We enforce HTTPS for all communication between MyScraper, Firebase, and Alchemy’s API. This ensures
+                <p class="presentation-p">We enforce HTTPS for all communication between MyScraper, Firebase, and Alchemy’s API. This ensures
                     data in
                     transit, including user credentials and blockchain-related requests, is encrypted and protected from
                     eavesdropping or interception.</p>
             </div>
             <div class="security-item">
                 <h4>Restricted API Keys</h4>
-                <p>Our API keys for Alchemy and other services are configured with domain or IP restrictions where
+                <p class="presentation-p">Our API keys for Alchemy and other services are configured with domain or IP restrictions where
                     possible.
                     This limits the environment in which keys can be used, reducing the risk of unauthorized or
                     malicious use.</p>
@@ -103,7 +103,7 @@
             <h3>Firebase Security</h3>
             <div class="security-item">
                 <h4>Firebase Authentication</h4>
-                <p>MyScraper uses Firebase Authentication to securely manage user sign-ins. We support multiple login
+                <p class="presentation-p">MyScraper uses Firebase Authentication to securely manage user sign-ins. We support multiple login
                     methods
                     (e.g., email/password, Google). Each authenticated user receives a secure token that our backend
                     checks before
@@ -111,7 +111,7 @@
             </div>
             <div class="security-item">
                 <h4>Firestore Security Rules</h4>
-                <p>We implement stringent Firestore rules to control which data each user can read and write. These
+                <p class="presentation-p">We implement stringent Firestore rules to control which data each user can read and write. These
                     rules are
                     regularly updated to reflect MyScraper’s evolving functionality and to address potential security
                     gaps,
@@ -119,7 +119,7 @@
             </div>
             <div class="security-item">
                 <h4>Cloud Functions</h4>
-                <p>Whenever we need to perform sensitive tasks—like processing large volumes of blockchain transaction
+                <p class="presentation-p">Whenever we need to perform sensitive tasks—like processing large volumes of blockchain transaction
                     data or
                     advanced business logic—we rely on Firebase Cloud Functions. These server-side functions can only be
                     triggered
@@ -134,7 +134,7 @@
             <h3>Scraper Abuse Prevention</h3>
             <div class="security-item">
                 <h4>Usage Limits</h4>
-                <p>To avoid excessive or malicious use of MyScraper’s transaction monitoring features, we implement rate
+                <p class="presentation-p">To avoid excessive or malicious use of MyScraper’s transaction monitoring features, we implement rate
                     limits
                     and quotas per user or session. Users exceeding these limits may be temporarily throttled or
                     blocked,
@@ -142,7 +142,7 @@
             </div>
             <div class="security-item">
                 <h4>Input Sanitization</h4>
-                <p>Before our app processes any user-provided data (such as addresses or custom filters for
+                <p class="presentation-p">Before our app processes any user-provided data (such as addresses or custom filters for
                     transactions), we
                     apply thorough validation and sanitization. This reduces the risk of injection attacks or any misuse
                     that
@@ -150,7 +150,7 @@
             </div>
             <div class="security-item">
                 <h4>Monitoring and Alerts</h4>
-                <p>We closely monitor usage metrics—like request volume and error rates—to detect suspicious patterns.
+                <p class="presentation-p">We closely monitor usage metrics—like request volume and error rates—to detect suspicious patterns.
                     Automatic
                     alerts notify our team of any unusual behavior, enabling quick investigation and response to
                     potential
@@ -163,14 +163,14 @@
             <h3>Best Practices and Additional Security Measures</h3>
             <div class="security-item">
                 <h4>Firebase App Check</h4>
-                <p>We enable Firebase App Check to confirm that requests to our backend and database services originate
+                <p class="presentation-p">We enable Firebase App Check to confirm that requests to our backend and database services originate
                     specifically from the genuine MyScraper application, preventing unauthorized clients or automated
                     bots from
                     misusing our resources.</p>
             </div>
             <div class="security-item">
                 <h4>Role-Based Access Control</h4>
-                <p>MyScraper’s architecture allows us to assign different permission levels (e.g., admin, standard
+                <p class="presentation-p">MyScraper’s architecture allows us to assign different permission levels (e.g., admin, standard
                     user). This
                     ensures each user can only view and manage the data they are authorized to handle, minimizing the
                     impact of
@@ -178,7 +178,7 @@
             </div>
             <div class="security-item">
                 <h4>Logging and Monitoring</h4>
-                <p>We maintain extensive logs of system events, API calls, and user actions. These logs are continuously
+                <p class="presentation-p">We maintain extensive logs of system events, API calls, and user actions. These logs are continuously
                     monitored, and our security team conducts regular audits to detect anomalies. Should a security
                     incident
                     occur, our logging infrastructure enables swift troubleshooting and remediation.</p>
@@ -186,7 +186,7 @@
         </div>
 
         <div class="security-summary">
-            <p>By integrating these robust measures—across the frontend, backend, and the communication layers—MyScraper
+            <p class="presentation-p">By integrating these robust measures—across the frontend, backend, and the communication layers—MyScraper
                 provides a secure environment for receiving real-time blockchain transaction notifications, safeguarding
                 both
                 user data and our internal systems against evolving threats.</p>

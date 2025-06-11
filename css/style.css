@@ -13,14 +13,14 @@ body {
 }
 
 .e {
-    color: rgb(5, 172, 5);
+    color: #47b046;
 }
 
 /* Header: barra de navegación */
 header {
     width: 100%;
     background-color: #181d27;
-    box-shadow: 0 1px 2px rgb(5, 172, 5);
+    box-shadow: 0 1px 2px #47b046;
     position: sticky;
     top: 0;
     z-index: 999;
@@ -72,12 +72,12 @@ nav {
     bottom: -2px;
     width: 0%;
     height: 2px;
-    background-color: rgb(5, 172, 5);
+    background-color: #47b046;
     transition: width 0.3s ease;
 }
 
 .nav-links li:hover {
-    color: rgb(5, 172, 5);
+    color: #47b046;
 }
 
 .nav-links li:hover::after {
@@ -85,7 +85,7 @@ nav {
 }
 
 .btn-download-top {
-    background-color: rgb(5, 172, 5);
+    background-color: #47b046;
     color: #fff;
     border: none;
     padding: 0.5rem 1rem;
@@ -126,7 +126,7 @@ nav {
 }
 
 .btn-download-chrome {
-    background-color: rgb(5, 172, 5);
+    background-color: #47b046;
     color: #fff;
     border: none;
     padding: 1rem 2rem;
@@ -144,7 +144,7 @@ nav {
 .info-disclaimer {
     margin-top: 4rem;
     font-size: 0.9rem;
-    color: #777;
+    color: #c8ced6;
 }
 
 .info-disclaimer a {
@@ -275,6 +275,11 @@ nav {
     color: white;
 }
 
+.presentation-p-date {
+    color: white;
+    text-align: center;
+}
+
 /* 3) Fijamos una altura para el slider igual a la altura de la imagen */
 .presentation-image .slider {
     position: relative;
@@ -324,7 +329,7 @@ nav {
 
 /* Colores destacados */
 .highlight {
-    color: rgb(5, 172, 5);
+    color: #47b046;
     font-size: 5rem;
     font-weight: 1000;
     margin-bottom: 1rem;
@@ -334,7 +339,7 @@ nav {
 .highlight-green-e {
     font-size: 5rem;
     font-weight: 1000;
-    color: rgb(5, 172, 5);
+    color: #47b046;
     margin-bottom: 1rem;
     line-height: 1.2;
 
@@ -354,7 +359,7 @@ nav {
 }
 
 .presentation-h3 {
-    color: #747474;
+    color: #9ca0a7;
 }
 
 /**Panel sticky**/
@@ -489,7 +494,7 @@ nav {
 .coming-soon {
     margin-top: 2rem;
     font-size: 1.2rem;
-    color: #ccc;
+    color: #c8ced6;
     font-style: italic;
     letter-spacing: 0.5px;
 }
@@ -498,7 +503,7 @@ nav {
 /** Footer **/
 .footer {
     background-color: #181d27;
-    color: #ccc;
+    color: #c8ced6;
     padding: 4rem 2rem 2rem;
     font-size: 0.95rem;
 }
@@ -517,7 +522,7 @@ nav {
 }
 
 .footer-column h4 {
-    color: #888;
+    color: #ffffff;
     margin-bottom: 1rem;
     font-weight: 600;
     font-size: 1rem;
@@ -539,7 +544,7 @@ nav {
 }
 
 .footer-column ul li a:hover {
-    color: rgb(5, 172, 5);
+    color: #47b046;
 }
 
 .footer-bottom {
@@ -547,7 +552,7 @@ nav {
     margin-top: 2rem;
     border-top: 1px solid #181d27;
     padding-top: 1.5rem;
-    color: #999;
+    color: #c8ced6;
     font-size: 0.85rem;
 }
 
@@ -575,7 +580,7 @@ nav {
 .security-item h4 {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
-    color: rgb(5, 172, 5);
+    color: #47b046;
 }
 
 .security-item p {
@@ -597,6 +602,16 @@ nav {
 /* ---------------------------------------------
    Supported Blockchains heading image styling
    --------------------------------------------- */
+.supported-title {
+    font-size: 3rem;
+    font-weight: 1000;
+    color: white;
+    text-align: center;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
 .supported-blockchains {
     width: 100%;
     text-align: center;
@@ -654,12 +669,12 @@ nav {
 }
 
 .cookie-popup a {
-    color: rgb(5, 172, 5);
+    color: #47b046;
     text-decoration: underline;
 }
 
 .btn-accept {
-    background-color: rgb(5, 172, 5);
+    background-color: #47b046;
     color: white;
     border: none;
     padding: 0.5rem 1rem;
@@ -709,7 +724,7 @@ nav {
     background-size: cover;
     background-position: center;
     margin: 0 auto 1rem;
-    border: 4px solid rgb(5, 172, 5);
+    /*border: 4px solid #47b046;*/
 }
 
 .team-member h3 {
@@ -721,7 +736,7 @@ nav {
 .team-member .role {
     margin-bottom: 1rem;
     font-size: 0.9rem;
-    color: #bbb;
+    color: #c8ced6;
 }
 
 .social-links {
@@ -1124,7 +1139,7 @@ body {
 header {
     width: 100%;
     background-color: #181d27;
-    box-shadow: 0 1px 2px rgb(5, 172, 5);
+    box-shadow: 0 1px 2px #47b046;
     position: sticky;
     top: 0;
     z-index: 999;
@@ -1181,12 +1196,12 @@ nav {
     bottom: -2px;
     width: 0%;
     height: 2px;
-    background-color: rgb(5, 172, 5);
+    background-color: #47b046;
     transition: width 0.3s ease;
 }
 
 .seguridad-nav-links li:hover {
-    color: rgb(5, 172, 5);
+    color: #47b046;
 }
 
 .seguridad-nav-links li:hover::after {
@@ -1194,7 +1209,7 @@ nav {
 }
 
 .seguridad-btn-download-top {
-    background-color: rgb(5, 172, 5);
+    background-color: #47b046;
     color: #fff;
     border: none;
     padding: 0.5rem 1rem;
@@ -1233,7 +1248,7 @@ nav {
 .seguridad-presentation-text h3 {
     font-size: 2rem;
     margin-bottom: 1rem;
-    color: #747474;
+    color: #c8ced6;
 }
 
 .seguridad-presentation-p {
@@ -1255,8 +1270,8 @@ nav {
 .seguridad-security-section h3 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
-    color: #00ff88;
-    border-bottom: 2px solid #00ff88;
+    color: #f0f1f3;
+    border-bottom: 2px solid #47b046;
     padding-bottom: 0.5rem;
 }
 
@@ -1267,7 +1282,7 @@ nav {
 .seguridad-security-item h4 {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
-    color: rgb(5, 172, 5);
+    color: #c8ced6;
 }
 
 .seguridad-security-item p {
@@ -1284,57 +1299,6 @@ nav {
     text-align: center;
     background-color: #202533;
     border-radius: 8px;
-}
-
-/* Footer */
-.seguridad-footer {
-    background-color: #181d27;
-    color: #ccc;
-    padding: 4rem 2rem 2rem;
-    font-size: 0.95rem;
-}
-
-.seguridad-footer-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    column-gap: 4rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.seguridad-footer-column h4 {
-    color: #888;
-    margin-bottom: 1rem;
-    font-weight: 600;
-    font-size: 1rem;
-}
-
-.seguridad-footer-column ul {
-    list-style: none;
-    padding: 0;
-}
-
-.seguridad-footer-column ul li {
-    margin-bottom: 0.6rem;
-}
-
-.seguridad-footer-column ul li a {
-    color: #fff;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.seguridad-footer-column ul li a:hover {
-    color: #00ff88;
-}
-
-.seguridad-footer-bottom {
-    text-align: left;
-    margin-top: 2rem;
-    border-top: 1px solid #181d27;
-    padding-top: 1.5rem;
-    color: #999;
-    font-size: 0.85rem;
 }
 
 /* Media queries para móviles */
