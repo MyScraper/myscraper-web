@@ -67,8 +67,12 @@ nav {
 }
 
 .logo img {
-    height: 50px;
+    height: 52px;
     margin-right: 8px;
+}
+
+.logo img:first-child {
+    height: 64px;
 }
 
 /* Enlaces de navegación con interacción al hover */
