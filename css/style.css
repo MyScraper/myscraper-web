@@ -1130,13 +1130,14 @@ nav {
     /* Layout de la sección presentación */
     .presentation {
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
     }
 
     .presentation-text,
     .presentation-image {
         flex: 1;
         min-height: 400px;
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
