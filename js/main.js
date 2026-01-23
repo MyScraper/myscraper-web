@@ -1,27 +1,5 @@
 // main.js
 // Funciones globales de UI
-function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-        x.className += " responsive";
-    } else {
-        x.className = "topnav";
-    }
-}
-
-function date() {
-    var parrafo = document.getElementById("fecha_vigencia");
-    if (parrafo) {
-        parrafo.innerHTML = "Fecha de vigencia: " + new Date().toLocaleDateString();
-    }
-}
-
-function current_year() {
-    var parrafo = document.getElementById("año_actual");
-    if (parrafo) {
-        parrafo.innerHTML = "&copy; " + new Date().getFullYear() + " MyScraper";
-    }
-}
 
 function updateFadeEffect() {
     const header = document.querySelector('header');
@@ -42,7 +20,7 @@ function updateFadeEffect() {
     hero.style.transform = `scale(${scrollY < fadeRange ? 1 - (scrollY / (fadeRange * 5)) : 0.8})`;
 
     mobile.style.opacity = scrollY < fadeRange ? 1 - (scrollY / fadeRange) : 0;
-    mobile.style.transform = `translateY(-50%, -${scrollY < fadeRange ? (scrollY / fadeRange) * 50 : 50}px)`;
+    mobile.style.transform = `translateY(-${scrollY < fadeRange ? (scrollY / fadeRange) * 50 : 50}px)`;
 
     steps.forEach((step) => {
         const rect = step.getBoundingClientRect();
@@ -64,7 +42,10 @@ function updateFadeEffect() {
     if (scrollContainer) {
         const scrollStart = scrollContainer.offsetTop;
         const scrollEnd = scrollStart + scrollContainer.offsetHeight - window.innerHeight;
-        const progress = Math.min(1, Math.max(0, (scrollY - scrollStart) / (scrollEnd - scrollStart)));
+        const scrollDistance = scrollEnd - scrollStart;
+        const progress = scrollDistance > 0
+            ? Math.min(1, Math.max(0, (scrollY - scrollStart) / scrollDistance))
+            : 0;
 
         const toggle = progress > 0.5;
         document.querySelectorAll('.scroll-left').forEach(el => el.classList.toggle('out', toggle));
@@ -76,8 +57,6 @@ function updateFadeEffect() {
 window.addEventListener('scroll', updateFadeEffect);
 window.addEventListener('load', () => {
     updateFadeEffect();
-    current_year();
-    date();
 });
 
 // Cookies
@@ -93,9 +72,45 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Menú móvil
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (!hamburger || !navLinks) return;
+
+    hamburger.setAttribute('role', 'button');
+    hamburger.setAttribute('tabindex', '0');
+    hamburger.setAttribute('aria-label', 'Toggle navigation');
+    hamburger.setAttribute('aria-expanded', 'false');
+
+    const toggleMenu = () => {
+        const isOpen = navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active', isOpen);
+        hamburger.setAttribute('aria-expanded', String(isOpen));
+    };
+
+    hamburger.addEventListener('click', toggleMenu);
+    hamburger.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            toggleMenu();
+        }
+    });
+
+    navLinks.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            hamburger.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+        });
+    });
+});
+
 // Slider animado
 document.addEventListener('DOMContentLoaded', () => {
     const slides = document.querySelectorAll('.slider .slide');
+    if (slides.length <= 1) return;
     let index = 0;
     setInterval(() => {
         slides[index].classList.remove('active');
@@ -109,6 +124,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("deleteAccountForm");
 
     if (form) {
+        if (!window.emailjs) {
+            console.error("EmailJS is not available. Form submission is disabled.");
+            form.addEventListener("submit", (event) => {
+                event.preventDefault();
+                alert("The request service is temporarily unavailable. Please try again later.");
+            });
+            return;
+        }
+
         emailjs.init("gXuC4AL20b4j9bv36"); // PUBLIC_KEY
 
         form.addEventListener("submit", (event) => {
