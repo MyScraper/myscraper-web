@@ -1,29 +1,175 @@
-function myFunction() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-        x.className += " responsive";
-    } else {
-        x.className = "topnav";
+// main.js
+// Funciones globales de UI
+
+function updateFadeEffect() {
+    const header = document.querySelector('header');
+    const hero = document.querySelector('.hero');
+    const mobile = document.querySelector('.mobile-container');
+    const steps = document.querySelectorAll('.step');
+    const logos = document.querySelectorAll('.crypto-logo');
+
+    if (!header || !hero || !mobile) return;
+
+    let scrollY = window.scrollY;
+    let fadeRange = window.innerHeight;
+
+    header.style.opacity = scrollY < fadeRange ? 1 - (scrollY / fadeRange) : 0;
+    header.style.transform = `translateY(${scrollY < fadeRange ? -scrollY / 2 : -fadeRange / 2}px)`;
+
+    hero.style.opacity = scrollY < fadeRange ? 1 - (scrollY / fadeRange) : 0;
+    hero.style.transform = `scale(${scrollY < fadeRange ? 1 - (scrollY / (fadeRange * 5)) : 0.8})`;
+
+    mobile.style.opacity = scrollY < fadeRange ? 1 - (scrollY / fadeRange) : 0;
+    mobile.style.transform = `translateY(-${scrollY < fadeRange ? (scrollY / fadeRange) * 50 : 50}px)`;
+
+    steps.forEach((step) => {
+        const rect = step.getBoundingClientRect();
+        const isFirst = step.classList.contains("step-1");
+        const inView = isFirst
+            ? rect.top < window.innerHeight * 0.8 && rect.bottom > window.innerHeight * 0.1
+            : rect.top < window.innerHeight * 0.6 && rect.bottom > window.innerHeight * 0.3;
+
+        step.classList.toggle("visible", inView);
+    });
+
+    logos.forEach((logo) => {
+        const rect = logo.getBoundingClientRect();
+        const visibleThreshold = window.innerHeight * 0.85;
+        logo.classList.toggle('visible', rect.top < visibleThreshold);
+    });
+
+    const scrollContainer = document.querySelector('.presentation-scroll');
+    if (scrollContainer) {
+        const scrollStart = scrollContainer.offsetTop;
+        const scrollEnd = scrollStart + scrollContainer.offsetHeight - window.innerHeight;
+        const scrollDistance = scrollEnd - scrollStart;
+        const progress = scrollDistance > 0
+            ? Math.min(1, Math.max(0, (scrollY - scrollStart) / scrollDistance))
+            : 0;
+
+        const toggle = progress > 0.5;
+        document.querySelectorAll('.scroll-left').forEach(el => el.classList.toggle('out', toggle));
+        document.querySelectorAll('.scroll-right').forEach(el => el.classList.toggle('out', toggle));
     }
 }
 
-function date() {
-    // Obtén la referencia al elemento <p>
-    var parrafo = document.getElementById("fecha_vigencia");
+// Eventos generales
+window.addEventListener('scroll', updateFadeEffect);
+window.addEventListener('load', () => {
+    updateFadeEffect();
+});
 
-    // Actualiza el contenido del párrafo con la fecha actual entre corchetes
-    parrafo.innerHTML = "Fecha de vigencia: " + new Date().toLocaleDateString() + "";
-}
+// Cookies
+document.addEventListener('DOMContentLoaded', () => {
+    const popup = document.getElementById('cookie-popup');
+    const acceptBtn = document.getElementById('accept-cookies');
+    if (popup && acceptBtn && !sessionStorage.getItem('cookiesAccepted')) {
+        popup.classList.remove('hidden');
+        acceptBtn.addEventListener('click', () => {
+            sessionStorage.setItem('cookiesAccepted', true);
+            popup.classList.add('hidden');
+        });
+    }
+});
 
-function current_year() {
-    // Obtén la referencia al elemento <p>
-    var parrafo = document.getElementById("año_actual");
+// Menú móvil
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
 
-    // Actualiza el contenido del párrafo con la fecha actual entre corchetes
-    parrafo.innerHTML = "&copy; " + new Date().getFullYear() + " MyScraper";
-}
+    if (!hamburger || !navLinks) return;
 
-document.addEventListener("DOMContentLoaded", function() {
-    current_year();
-    date();
+    hamburger.setAttribute('role', 'button');
+    hamburger.setAttribute('tabindex', '0');
+    hamburger.setAttribute('aria-label', 'Toggle navigation');
+    hamburger.setAttribute('aria-expanded', 'false');
+
+    const toggleMenu = () => {
+        const isOpen = navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active', isOpen);
+        hamburger.setAttribute('aria-expanded', String(isOpen));
+    };
+
+    hamburger.addEventListener('click', toggleMenu);
+    hamburger.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            toggleMenu();
+        }
+    });
+
+    navLinks.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            hamburger.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+        });
+    });
+});
+
+// Slider animado
+document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.querySelectorAll('.slider .slide');
+    if (slides.length <= 1) return;
+    let index = 0;
+    setInterval(() => {
+        slides[index].classList.remove('active');
+        index = (index + 1) % slides.length;
+        slides[index].classList.add('active');
+    }, 3000);
+});
+
+// --- FORMULARIO: Delete Account ---
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("deleteAccountForm");
+
+    if (form) {
+        if (!window.emailjs) {
+            console.error("EmailJS is not available. Form submission is disabled.");
+            form.addEventListener("submit", (event) => {
+                event.preventDefault();
+                alert("The request service is temporarily unavailable. Please try again later.");
+            });
+            return;
+        }
+
+        emailjs.init("gXuC4AL20b4j9bv36"); // PUBLIC_KEY
+
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const email = form.email.value;
+            const reason = form.reason.value;
+            const additional = form.additional.value || "No additional comments";
+            const date = new Date().toLocaleDateString();
+
+            emailjs.send("service_7em3x0p", "template_btpck0r", {
+                email,
+                reason,
+                additional,
+                date
+            }).then(() => {
+                showSuccessPopup();
+            }).catch((error) => {
+                alert("An error occurred while submitting the request. Please try again.");
+                console.error("EmailJS Error:", error);
+            });
+        });
+    }
+
+    function showSuccessPopup() {
+        const popup = document.createElement('div');
+        popup.className = 'success-popup';
+
+        popup.innerHTML = `<p class="presentation-p">Your request has been submitted successfully. 
+            We will delete your personal data from our records.</p>
+            <button id="popupCloseBtn">Continue</button>`;
+
+        document.body.appendChild(popup);
+
+        const closeButton = document.getElementById('popupCloseBtn');
+        closeButton.addEventListener('click', () => {
+            popup.remove();
+        });
+    }
 });
