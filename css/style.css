@@ -206,31 +206,36 @@ nav {
     display: flex;
     gap: 12px;
     justify-content: center;
+    align-items: center;
     margin-top: 20px;
 }
 
 .download-buttons img {
-    height: 70px;
-    /* Ajusta según tus imágenes */
+    width: 170px;
+    height: 42px;
     cursor: pointer;
     transition: transform 0.2s ease;
     filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.35));
+    object-fit: contain;
+    display: block;
 }
 
 .download-buttons a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: 14px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background: rgba(255, 255, 255, 0.02);
+    width: auto;
+    height: auto;
+    padding: 0;
+    border-radius: 0;
+    overflow: visible;
+    border: 0;
+    background: transparent;
     transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .download-buttons a:hover {
     transform: translateY(-2px);
-    border-color: rgba(71, 176, 70, 0.5);
     box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
 }
 
@@ -352,6 +357,7 @@ nav {
     opacity: 0;
     transform: translateX(-50%) rotateY(180deg);
     transition: transform 1s ease, opacity 1s ease;
+    object-fit: contain;
 }
 
 .presentation-image .slide.active {
@@ -470,7 +476,9 @@ nav {
 }
 
 .presentation-image img {
-    max-width: 90%;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 /*
@@ -1111,8 +1119,8 @@ nav {
         opacity: 0;
         transform: rotateY(180deg);
         transition: transform 1s ease, opacity 1s ease;
+        object-fit: contain;
     }
-
     .presentation-image .slide.active {
         opacity: 1;
         transform: rotateY(0deg);
@@ -1333,8 +1341,8 @@ nav {
         opacity: 0;
         transform: rotateY(180deg);
         transition: transform 1s ease, opacity 1s ease;
+        object-fit: contain;
     }
-
     .presentation-image .slide.active {
         opacity: 1;
         transform: rotateY(0deg);
@@ -1672,3 +1680,6 @@ nav {
         justify-content: space-between;
     }
 }
+
+
+
